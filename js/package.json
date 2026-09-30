@@ -1,0 +1,15 @@
+{
+  "name": "regen-pi",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "ES2016 contrib-group PI regeneration (Option B classname separators)",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "happy-dom": "^18.0.1",
+    "vitest": "^3.2.4"
+  }
+}

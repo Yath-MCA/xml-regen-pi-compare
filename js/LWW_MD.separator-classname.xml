@@ -1,0 +1,28 @@
+<pi-config client="LWW" shortcode="MD" dtd="JATS" version="1" status="draft">
+  <!-- Option B: classname is required on each <separator>. -->
+  <contrib>
+    <elements>
+      <prefix         allowed="no"/>
+      <degrees        allowed="yes"/>
+      <suffix         allowed="no"/>
+      <role           allowed="yes"/>
+      <author-comment allowed="yes"/>
+      <altername      allowed="yes"/>
+      <collab         allowed="yes"/>
+      <on-behalf-of   allowed="yes"/>
+    </elements>
+    <ques>
+      <author-notes allowed="no"/>
+      <corresp      allowed="no"/>
+      <aff          allowed="yes"/>
+    </ques>
+    <separators>
+      <separator classname="given-names"      value="&#x00A0;" pos="inner"/>
+      <separator classname="between-xrefs"    value=","        pos="after"/>
+      <separator classname="between-contribs" value=","        pos="after" contribs="3+"/>
+      <separator classname="between-contribs" value="and"      pos="after" contribs="3+" when="last-before"/>
+      <separator classname="between-contribs" value="and"      pos="after" contribs="2"  when="last-before"/>
+      <separator classname="between-contribs" value=""         pos="after" when="last"/>
+    </separators>
+  </contrib>
+</pi-config>

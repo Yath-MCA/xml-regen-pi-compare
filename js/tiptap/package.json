@@ -1,0 +1,35 @@
+{
+  "name": "contrib-tiptap",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "description": "TipTap React editor for IMPACT HTML with Summernote-style skeleton transform, ICE↔TipTap track bridge, tiptap-track-changes, and regen-pi pistart re-apply",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./ContribEditor": "./ContribEditor.jsx",
+    "./TipTapManager": "./TipTapManager.js",
+    "./transform/htmlSkeleton": "./transform/htmlSkeleton.js",
+    "./transform/iceBridge": "./transform/iceBridge.js"
+  },
+  "peerDependencies": {
+    "@tiptap/core": "^2.0.0",
+    "@tiptap/pm": "^2.0.0",
+    "@tiptap/react": "^2.0.0",
+    "@tiptap/starter-kit": "^2.0.0",
+    "tiptap-track-changes": "^0.1.0 || ^1.0.0",
+    "react": ">=17",
+    "react-dom": ">=17"
+  },
+  "peerDependenciesMeta": {
+    "@tiptap/core": { "optional": false },
+    "@tiptap/react": { "optional": false },
+    "@tiptap/starter-kit": { "optional": false },
+    "tiptap-track-changes": { "optional": false },
+    "react": { "optional": false }
+  },
+  "scripts": {
+    "lint": "echo \"no lint configured\""
+  },
+  "keywords": ["tiptap", "contrib", "impact", "regen-pi", "track-changes", "ice", "ckeditor"]
+}

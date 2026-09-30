@@ -1,0 +1,218 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]: MD-D-25-17795 - regen compare
+    - generic [ref=e4]:
+      - generic [ref=e5]: Docid N71d1a3cc-9b2f-4521-8366-1f763fa7510c
+      - generic [ref=e6]: Match 67.7% (21/31)
+      - generic [ref=e7]: Tool version v2
+      - generic [ref=e8]: Generated 2026-09-25 12:30
+    - group "Column view" [ref=e9]:
+      - button "Preview HTML" [ref=e10] [cursor=pointer]
+      - button "Raw XML" [ref=e11] [cursor=pointer]
+  - main [ref=e12]:
+    - table [ref=e13]:
+      - rowgroup [ref=e14]:
+        - row [ref=e15]:
+          - columnheader "Original" [ref=e16]
+          - columnheader "Regenerated" [ref=e17]
+        - row [ref=e18]:
+          - cell "Contrib 1 https://orcid.org/0000-0001-6354-3297Korucu⚠Osman a,*, Contrib 2 https://orcid.org/0000-0002-0039-0438Yener⚠Arif Ülkü b, Contrib 3 https://orcid.org/0000-0001-7197-0299Ekicier Acar⚠Selcan b, Contrib 4 https://orcid.org/0009-0007-4533-8733Karaer Ünaldı⚠Hatice a, Contrib 5 https://orcid.org/0000-0003-4766-1941Savıcı⚠Volkan a, Contrib 6 https://orcid.org/0009-0006-6194-2781Akbudak⚠Ömer a, Contrib 7 https://orcid.org/0009-0009-7282-1370Karabulut⚠Burcu a, Contrib 8 https://orcid.org/0000-0001-6975-4263Fidan Buçin⚠Sinem a, Contrib 9 https://orcid.org/0000-0002-0013-5920Birgin⚠Fatma Nur a, Contrib 10 https://orcid.org/0000-0002-6056-4401Emektar⚠Emine c" [ref=e19]:
+            - generic [ref=e20]:
+              - generic [ref=e21]:
+                - generic [ref=e22]: Contrib 1
+                - generic [ref=e23]:
+                  - text: https://orcid.org/0000-0001-6354-3297Korucu⚠Osman
+                  - superscript [ref=e24]: a
+                  - text: ",*,"
+              - generic [ref=e25]:
+                - generic [ref=e26]: Contrib 2
+                - generic [ref=e27]:
+                  - text: https://orcid.org/0000-0002-0039-0438Yener⚠Arif Ülkü
+                  - superscript [ref=e28]: b
+                  - text: ","
+              - generic [ref=e29]:
+                - generic [ref=e30]: Contrib 3
+                - generic [ref=e31]:
+                  - text: https://orcid.org/0000-0001-7197-0299Ekicier Acar⚠Selcan
+                  - superscript [ref=e32]: b
+                  - text: ","
+              - generic [ref=e33]:
+                - generic [ref=e34]: Contrib 4
+                - generic [ref=e35]:
+                  - text: https://orcid.org/0009-0007-4533-8733Karaer Ünaldı⚠Hatice
+                  - superscript [ref=e36]: a
+                  - text: ","
+              - generic [ref=e37]:
+                - generic [ref=e38]: Contrib 5
+                - generic [ref=e39]:
+                  - text: https://orcid.org/0000-0003-4766-1941Savıcı⚠Volkan
+                  - superscript [ref=e40]: a
+                  - text: ","
+              - generic [ref=e41]:
+                - generic [ref=e42]: Contrib 6
+                - generic [ref=e43]:
+                  - text: https://orcid.org/0009-0006-6194-2781Akbudak⚠Ömer
+                  - superscript [ref=e44]: a
+                  - text: ","
+              - generic [ref=e45]:
+                - generic [ref=e46]: Contrib 7
+                - generic [ref=e47]:
+                  - text: https://orcid.org/0009-0009-7282-1370Karabulut⚠Burcu
+                  - superscript [ref=e48]: a
+                  - text: ","
+              - generic [ref=e49]:
+                - generic [ref=e50]: Contrib 8
+                - generic [ref=e51]:
+                  - text: https://orcid.org/0000-0001-6975-4263Fidan Buçin⚠Sinem
+                  - superscript [ref=e52]: a
+                  - text: ","
+              - generic [ref=e53]:
+                - generic [ref=e54]: Contrib 9
+                - generic [ref=e55]:
+                  - text: https://orcid.org/0000-0002-0013-5920Birgin⚠Fatma Nur
+                  - superscript [ref=e56]: a
+                  - text: ","
+              - generic [ref=e57]:
+                - generic [ref=e58]: Contrib 10
+                - generic [ref=e59]:
+                  - text: https://orcid.org/0000-0002-6056-4401Emektar⚠Emine
+                  - superscript [ref=e60]: c
+          - cell "Contrib 1 https://orcid.org/0000-0001-6354-3297Korucu, Osman a,*, Contrib 2 https://orcid.org/0000-0002-0039-0438Yener, Arif Ülkü b, Contrib 3 https://orcid.org/0000-0001-7197-0299Ekicier Acar, Selcan b, Contrib 4 https://orcid.org/0009-0007-4533-8733Karaer Ünaldı, Hatice a, Contrib 5 https://orcid.org/0000-0003-4766-1941Savıcı, Volkan a, Contrib 6 https://orcid.org/0009-0006-6194-2781Akbudak, Ömer a, Contrib 7 https://orcid.org/0009-0009-7282-1370Karabulut, Burcu a, Contrib 8 https://orcid.org/0000-0001-6975-4263Fidan Buçin, Sinem a, Contrib 9 https://orcid.org/0000-0002-0013-5920Birgin, Fatma Nur a, Contrib 10 https://orcid.org/0000-0002-6056-4401Emektar, Emine c" [ref=e61]:
+            - generic [ref=e62]:
+              - generic [ref=e63]:
+                - generic [ref=e64]: Contrib 1
+                - generic [ref=e65]:
+                  - text: https://orcid.org/0000-0001-6354-3297Korucu, Osman
+                  - superscript [ref=e66]: a
+                  - text: ",*,"
+              - generic [ref=e67]:
+                - generic [ref=e68]: Contrib 2
+                - generic [ref=e69]:
+                  - text: https://orcid.org/0000-0002-0039-0438Yener, Arif Ülkü
+                  - superscript [ref=e70]: b
+                  - text: ","
+              - generic [ref=e71]:
+                - generic [ref=e72]: Contrib 3
+                - generic [ref=e73]:
+                  - text: https://orcid.org/0000-0001-7197-0299Ekicier Acar, Selcan
+                  - superscript [ref=e74]: b
+                  - text: ","
+              - generic [ref=e75]:
+                - generic [ref=e76]: Contrib 4
+                - generic [ref=e77]:
+                  - text: https://orcid.org/0009-0007-4533-8733Karaer Ünaldı, Hatice
+                  - superscript [ref=e78]: a
+                  - text: ","
+              - generic [ref=e79]:
+                - generic [ref=e80]: Contrib 5
+                - generic [ref=e81]:
+                  - text: https://orcid.org/0000-0003-4766-1941Savıcı, Volkan
+                  - superscript [ref=e82]: a
+                  - text: ","
+              - generic [ref=e83]:
+                - generic [ref=e84]: Contrib 6
+                - generic [ref=e85]:
+                  - text: https://orcid.org/0009-0006-6194-2781Akbudak, Ömer
+                  - superscript [ref=e86]: a
+                  - text: ","
+              - generic [ref=e87]:
+                - generic [ref=e88]: Contrib 7
+                - generic [ref=e89]:
+                  - text: https://orcid.org/0009-0009-7282-1370Karabulut, Burcu
+                  - superscript [ref=e90]: a
+                  - text: ","
+              - generic [ref=e91]:
+                - generic [ref=e92]: Contrib 8
+                - generic [ref=e93]:
+                  - text: https://orcid.org/0000-0001-6975-4263Fidan Buçin, Sinem
+                  - superscript [ref=e94]: a
+                  - text: ","
+              - generic [ref=e95]:
+                - generic [ref=e96]: Contrib 9
+                - generic [ref=e97]:
+                  - text: https://orcid.org/0000-0002-0013-5920Birgin, Fatma Nur
+                  - superscript [ref=e98]: a
+                  - text: ","
+              - generic [ref=e99]:
+                - generic [ref=e100]: Contrib 10
+                - generic [ref=e101]:
+                  - text: https://orcid.org/0000-0002-6056-4401Emektar, Emine
+                  - superscript [ref=e102]: c
+    - heading "Mismatch details" [level=2] [ref=e103]
+    - table [ref=e104]:
+      - rowgroup [ref=e105]:
+        - row [ref=e106]:
+          - columnheader "Contrib" [ref=e107]
+          - columnheader "Slot" [ref=e108]
+          - columnheader "Expected (original)" [ref=e109]
+          - columnheader "Regenerated" [ref=e110]
+        - row [ref=e111]:
+          - cell "1 of 10" [ref=e112]
+          - cell "surname" [ref=e113]
+          - cell [ref=e114]:
+            - code [ref=e115]: (none)
+          - cell [ref=e116]:
+            - code [ref=e117]: "',[nbsp]'"
+        - row [ref=e118]:
+          - cell "2 of 10" [ref=e119]
+          - cell "surname" [ref=e120]
+          - cell [ref=e121]:
+            - code [ref=e122]: (none)
+          - cell [ref=e123]:
+            - code [ref=e124]: "',[nbsp]'"
+        - row [ref=e125]:
+          - cell "3 of 10" [ref=e126]
+          - cell "surname" [ref=e127]
+          - cell [ref=e128]:
+            - code [ref=e129]: (none)
+          - cell [ref=e130]:
+            - code [ref=e131]: "',[nbsp]'"
+        - row [ref=e132]:
+          - cell "4 of 10" [ref=e133]
+          - cell "surname" [ref=e134]
+          - cell [ref=e135]:
+            - code [ref=e136]: (none)
+          - cell [ref=e137]:
+            - code [ref=e138]: "',[nbsp]'"
+        - row [ref=e139]:
+          - cell "5 of 10" [ref=e140]
+          - cell "surname" [ref=e141]
+          - cell [ref=e142]:
+            - code [ref=e143]: (none)
+          - cell [ref=e144]:
+            - code [ref=e145]: "',[nbsp]'"
+        - row [ref=e146]:
+          - cell "6 of 10" [ref=e147]
+          - cell "surname" [ref=e148]
+          - cell [ref=e149]:
+            - code [ref=e150]: (none)
+          - cell [ref=e151]:
+            - code [ref=e152]: "',[nbsp]'"
+        - row [ref=e153]:
+          - cell "7 of 10" [ref=e154]
+          - cell "surname" [ref=e155]
+          - cell [ref=e156]:
+            - code [ref=e157]: (none)
+          - cell [ref=e158]:
+            - code [ref=e159]: "',[nbsp]'"
+        - row [ref=e160]:
+          - cell "8 of 10" [ref=e161]
+          - cell "surname" [ref=e162]
+          - cell [ref=e163]:
+            - code [ref=e164]: (none)
+          - cell [ref=e165]:
+            - code [ref=e166]: "',[nbsp]'"
+        - row [ref=e167]:
+          - cell "9 of 10" [ref=e168]
+          - cell "surname" [ref=e169]
+          - cell [ref=e170]:
+            - code [ref=e171]: (none)
+          - cell [ref=e172]:
+            - code [ref=e173]: "',[nbsp]'"
+        - row [ref=e174]:
+          - cell "10 of 10" [ref=e175]
+          - cell "surname" [ref=e176]
+          - cell [ref=e177]:
+            - code [ref=e178]: (none)
+          - cell [ref=e179]:
+            - code [ref=e180]: "',[nbsp]'"
