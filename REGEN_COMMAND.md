@@ -46,6 +46,28 @@ python .\run_cli.py `
 
 This process uses the existing `contrib_group_original_clean.xml` files and does not run extraction.
 
+### Shared templates (`followed-journals`)
+
+`JATS\{CLIENT}_CONTRIB_PI_CONFIG.xml` may contain several `<contrib>` blocks. Regen picks
+the block whose `followed-journals` list includes the chosen project code
+(comma-separated, case-insensitive). Singular `followed-journal` is also accepted.
+
+```xml
+<contrib id="master_md_001" followed-journals="MD,INF">...</contrib>
+<contrib id="master_atv_001" followed-journals="ATV">
+  <separators>
+    <between-xrefs value="" pos="after"/>  <!-- empty = do not insert xref PIs -->
+    ...
+  </separators>
+</contrib>
+```
+
+- `--project-code MD` or `INF` → `master_md_001`
+- `--project-code ATV` → `master_atv_001`
+- Shared templates via `followed-journals` on `<contrib>` (comma-separated project codes)
+- Empty `between-xrefs` skips insertion
+- `<between-contribs … when="no-affix" loc="right-after-name"/>` inserts after `</name>` only when no `alis="affix"` children exist
+
 ### One document only
 
 Default regen-pi processes every docid for the client/project-code. To process a single document:

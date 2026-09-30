@@ -93,7 +93,7 @@ class RegenCompareV2Tests(unittest.TestCase):
         self.assertIn("original-pi-different-position", surname["categories"])
         self.assertIn("extra-in-original", given["categories"])
 
-    def test_summary_v5_has_kpis_category_chart_and_filter_metadata(self):
+    def test_summary_v7_has_kpis_category_chart_and_filter_metadata(self):
         with TemporaryDirectory() as tmp:
             harness = Path(tmp)
             first = self.compared_row(harness / "doc-1", group(), group(surname_pi=" | "), "doc-1")
@@ -109,7 +109,7 @@ class RegenCompareV2Tests(unittest.TestCase):
             )
             html = out.read_text(encoding="utf-8")
 
-            self.assertTrue(out.name.endswith("_regen_compare_v5.html"))
+            self.assertTrue(out.name.endswith("_regen_compare_v7.html"))
             self.assertIn('<div class="kpi-value">2</div>', html)
             self.assertIn("Overall match", html)
             self.assertIn("Not matched", html)
@@ -146,7 +146,7 @@ class RegenCompareV2Tests(unittest.TestCase):
 
             self.assertIn("No mismatches to categorize.", html)
 
-    def test_summary_v5_has_versions_tabs_and_collapsible_tables(self):
+    def test_summary_v7_has_versions_tabs_and_collapsible_tables(self):
         with TemporaryDirectory() as tmp:
             harness = Path(tmp)
             row = self.compared_row(harness / "doc-1", group(), group(surname_pi=" | "))
@@ -157,9 +157,9 @@ class RegenCompareV2Tests(unittest.TestCase):
             )
             html = out.read_text(encoding="utf-8")
 
-            self.assertTrue(out.name.endswith("_regen_compare_v5.html"))
+            self.assertTrue(out.name.endswith("_regen_compare_v7.html"))
             self.assertIn("<b>Config version</b> v1", html)
-            self.assertIn("<b>Report version</b> v5", html)
+            self.assertIn("<b>Report version</b> v7", html)
             self.assertNotIn("Tool version", html)
             self.assertIn("File-level results", html)
             self.assertIn("Matched 100%", html)
@@ -203,7 +203,7 @@ class RegenCompareV2Tests(unittest.TestCase):
             html = (folder / "contrib_group_compare.html").read_text(encoding="utf-8")
 
             self.assertIn("<b>Config version</b> v1", html)
-            self.assertIn("<b>Report version</b> v5", html)
+            self.assertIn("<b>Report version</b> v7", html)
             self.assertNotIn("Tool version", html)
             self.assertIn("<th>Original</th><th>Regenerated</th>", html)
             self.assertIn("Preview HTML", html)
@@ -344,6 +344,162 @@ class ConditionalInsertionTests(unittest.TestCase):
             cfg = self.load_cfg(Path(tmp))
 
             self.assertEqual(cfg["version"], "")
+
+    def test_load_config_selects_by_followed_journals(self):
+        with TemporaryDirectory() as tmp:
+            config = Path(tmp) / "config.xml"
+            config.write_text(
+                '''<pi-config version="1.1">
+                <contrib id="master_md" followed-journals="MD,INF">
+                  <elements/><ques/>
+                  <separators><between-xrefs value="," pos="after"/></separators>
+                </contrib>
+                <contrib id="master_atv" followed-journals="ATV">
+                  <elements/><ques/>
+                  <separators><between-xrefs value="" pos="after"/></separators>
+                </contrib>
+                </pi-config>''',
+                encoding="utf-8",
+            )
+
+            md = regen.load_config(config, shortcode="MD")
+            inf = regen.load_config(config, shortcode="inf")
+            atv = regen.load_config(config, shortcode="ATV")
+
+            self.assertEqual(md["contrib_id"], "master_md")
+            self.assertEqual(md["sep"]["between-xrefs"], ",")
+            self.assertEqual(inf["contrib_id"], "master_md")
+            self.assertEqual(atv["contrib_id"], "master_atv")
+            self.assertEqual(atv["sep"]["between-xrefs"], "")
+
+    def test_load_config_accepts_singular_followed_journal(self):
+        with TemporaryDirectory() as tmp:
+            config = Path(tmp) / "config.xml"
+            config.write_text(
+                '''<pi-config>
+                <contrib id="solo" followed-journal="ATV">
+                  <elements/><ques/>
+                  <separators><between-xrefs value="" pos="after"/></separators>
+                </contrib>
+                </pi-config>''',
+                encoding="utf-8",
+            )
+
+            cfg = regen.load_config(config, shortcode="ATV")
+
+            self.assertEqual(cfg["contrib_id"], "solo")
+            self.assertEqual(cfg["followed_journals"], ["ATV"])
+
+    def test_load_config_no_match_raises(self):
+        with TemporaryDirectory() as tmp:
+            config = Path(tmp) / "config.xml"
+            config.write_text(
+                '''<pi-config>
+                <contrib id="master_md" followed-journals="MD">
+                  <elements/><ques/><separators/>
+                </contrib>
+                <contrib id="master_atv" followed-journals="ATV">
+                  <elements/><ques/><separators/>
+                </contrib>
+                </pi-config>''',
+                encoding="utf-8",
+            )
+
+            with self.assertRaises(ValueError) as ctx:
+                regen.load_config(config, shortcode="XYZ")
+
+            self.assertIn("no <contrib> followed-journals match", str(ctx.exception))
+            self.assertIn("XYZ", str(ctx.exception))
+
+    def test_load_config_duplicate_match_raises(self):
+        with TemporaryDirectory() as tmp:
+            config = Path(tmp) / "config.xml"
+            config.write_text(
+                '''<pi-config>
+                <contrib id="a" followed-journals="MD,ATV">
+                  <elements/><ques/><separators/>
+                </contrib>
+                <contrib id="b" followed-journals="ATV">
+                  <elements/><ques/><separators/>
+                </contrib>
+                </pi-config>''',
+                encoding="utf-8",
+            )
+
+            with self.assertRaises(ValueError) as ctx:
+                regen.load_config(config, shortcode="ATV")
+
+            self.assertIn("matched multiple", str(ctx.exception))
+
+    def test_empty_between_xrefs_skips_insertion(self):
+        with TemporaryDirectory() as tmp:
+            config = Path(tmp) / "config.xml"
+            config.write_text(
+                '''<pi-config>
+                <contrib id="atv" followed-journals="ATV">
+                  <elements/><ques/>
+                  <separators>
+                    <given-names value="&#x00A0;" pos="inner"/>
+                    <between-xrefs value="" pos="after"/>
+                    <between-contribs value=", " pos="inner"/>
+                  </separators>
+                </contrib>
+                </pi-config>''',
+                encoding="utf-8",
+            )
+            cfg = regen.load_config(config, shortcode="ATV")
+            raw = (
+                '<contrib><name><surname>Shi</surname>'
+                '<given-names>Hongjie</given-names></name>'
+                '<xref rid="a"/><xref rid="b"/><xref rid="c"/></contrib>'
+            )
+
+            result = regen.regen_one_contrib(raw, "last", cfg)
+
+            self.assertNotIn('<?pistart xml:space=","?>', result)
+            self.assertIn('<xref rid="a"/><xref rid="b"/><xref rid="c"/>', result)
+
+    def test_right_after_name_when_no_affix(self):
+        with TemporaryDirectory() as tmp:
+            config = Path(tmp) / "config.xml"
+            config.write_text(
+                '''<pi-config>
+                <contrib id="atv" followed-journals="ATV">
+                  <elements>
+                    <suffix allowed="yes" alis="affix"/>
+                    <degrees allowed="no" alis="affix"/>
+                  </elements><ques/>
+                  <separators>
+                    <given-names value="&#x00A0;" pos="inner"/>
+                    <between-xrefs value="" pos="after"/>
+                    <between-contribs value=", " pos="inner" when="no-affix" loc="right-after-name"/>
+                    <between-contribs value=", " pos="inner"/>
+                  </separators>
+                </contrib>
+                </pi-config>''',
+                encoding="utf-8",
+            )
+            cfg = regen.load_config(config, shortcode="ATV")
+            no_affix = (
+                '<contrib><name><surname>Shi</surname>'
+                '<given-names>Hongjie</given-names></name>'
+                '<xref rid="a"/><xref rid="b"/></contrib>'
+            )
+            with_affix = (
+                '<contrib><name><surname>Shi</surname>'
+                '<given-names>Hongjie</given-names></name>'
+                '<suffix>Jr</suffix><xref rid="a"/></contrib>'
+            )
+
+            out_no = regen.regen_one_contrib(no_affix, "first", cfg)
+            out_yes = regen.regen_one_contrib(with_affix, "first", cfg)
+
+            self.assertIn(
+                '</name><?pistart xml:space=", "?><xref rid="a"/>',
+                out_no,
+            )
+            self.assertNotIn('</name><?pistart', out_yes)
+            self.assertIn('<suffix>Jr</suffix>', out_yes)
 
     def test_xref_after_name_suppresses_surname_pi(self):
         with TemporaryDirectory() as tmp:
